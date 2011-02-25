@@ -24,7 +24,7 @@ SECRET_KEY = 'h#^38&_-#44$70f9#bf46)s8!g91vido_(im*0dr0g#9-+x=%c'
 TEMPLATE_LOADERS = (
 	'django.template.loaders.filesystem.Loader',
 	'django.template.loaders.app_directories.Loader',
-#	 'django.template.loaders.eggs.Loader',
+	'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,7 +48,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.request',
 	'django.core.context_processors.media',
 	'django.core.context_processors.csrf',
-	'transphorm.goals.context_processors.goals'
+	'transphorm.goals.context_processors.goals',
 )
 
 INSTALLED_APPS = (
@@ -60,8 +60,15 @@ INSTALLED_APPS = (
 	'django.contrib.admin',
 	'django.contrib.humanize',
 	'django.contrib.markup',
+	'django.contrib.messages',
 	'transphorm.goals',
-	'transphorm.social'
+	'transphorm.social',
+	'social_auth'
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend'
 )
 
 LOGIN_URL = '/login/'
